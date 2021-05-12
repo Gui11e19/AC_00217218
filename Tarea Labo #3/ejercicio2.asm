@@ -1,27 +1,21 @@
 org 100h
 
+section .text
+        XOR AX, AX
+        MOV AX, 1d
+        MOV word CX, 5d
+        JMP factorial
 
-.data:
-    res db 1
+factorial:
+        MUL CX
+        LOOP factorial
+save:
+        
+        MOV word [20Bh], AX         
+exit:
+        int 20h
+    
 
-.code:
-    MOV DX seg @data
-    mov ds, dx
 
-    mov cx, 5
 
-    ciclo:
-        mov al, res
-        mov bl, cl
-        mul bl
-        mov res, al 
-    loop ciclo
 
-    mov al, res
-    mov res, 20Bh
-
-    int 21h
-
-    .exit
-
-end
