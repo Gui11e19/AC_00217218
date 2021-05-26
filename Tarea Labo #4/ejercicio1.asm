@@ -1,4 +1,4 @@
- org 100h
+       org 100h
 
         section .text
         
@@ -8,7 +8,7 @@
         int 20h
         
         section .data
-arrNumber db 01,02,03,04,05,06,07,08,09,01,0xA
+arrNumber db 01,02,03,04,05,06,07,08,09,10
 
 StoreArr:
     xor SI,SI
@@ -17,7 +17,7 @@ while:
     mov AL,[BP+SI]
     mov dl, al
     
-    cmp AL,0xA
+    cmp AL,10
     je end
 
     mov bl,01h
